@@ -1,0 +1,478 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.2.2-SNAPSHOT), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "en", "undefined" ],
+    "baseIris" : [ "http://purl.org/muto/core", "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://www.w3.org/2000/01/rdf-schema", "http://purl.org/dc/terms", "http://www.w3.org/2001/XMLSchema", "http://rdfs.org/sioc/ns", "http://www.w3.org/2004/02/skos/core" ],
+    "title" : {
+      "undefined" : "Deep Learning Study"
+    },
+    "iri" : "http://purl.org/muto/core",
+    "version" : "Version 1.0 - Global changes (compared to earlier versions): Some properties have been renamed; cardinality constraints in class descriptions (owl:Restriction) have been replaced by global cardinality constraints (owl:FunctionalProperty).",
+    "author" : [ "Each" ],    "description" : {
+      "undefined" : "This project is used for deep learning study"
+    },
+    "labels" : {
+      "en" : "MUTO Core Ontology"
+    },
+    "other" : {
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "Each",
+        "type" : "label"
+      } ]
+    }
+  },
+  "class" : [ {
+    "id" : "1",
+    "type" : "owl:Class"
+  }, {
+    "id" : "2",
+    "type" : "owl:Class"
+  }, {
+    "id" : "3",
+    "type" : "owl:Class"
+  }, {
+    "id" : "4",
+    "type" : "owl:Class"
+  }, {
+    "id" : "5",
+    "type" : "owl:Class"
+  }, {
+    "id" : "6",
+    "type" : "owl:Class"
+  }, {
+    "id" : "7",
+    "type" : "owl:Class"
+  }, {
+    "id" : "8",
+    "type" : "owl:Class"
+  }, {
+    "id" : "9",
+    "type" : "owl:Class"
+  }, {
+    "id" : "10",
+    "type" : "owl:Class"
+  }, {
+    "id" : "11",
+    "type" : "owl:Class"
+  }, {
+    "id" : "12",
+    "type" : "owl:Class"
+  }, {
+    "id" : "13",
+    "type" : "owl:Class"
+  }, {
+    "id" : "14",
+    "type" : "owl:Class"
+  }, {
+    "id" : "15",
+    "type" : "owl:Class"
+  }, {
+    "id" : "16",
+    "type" : "owl:Class"
+  }, {
+    "id" : "17",
+    "type" : "owl:Class"
+  }, {
+    "id" : "18",
+    "type" : "owl:Class"
+  }, {
+    "id" : "19",
+    "type" : "owl:Class"
+  }, {
+    "id" : "20",
+    "type" : "owl:Class"
+  } ],
+  "classAttribute" : [ {
+    "label" : {
+      "IRI-based" : "Generalization and network design strategies",
+      "en" : "Generalization and network design strategies"
+    },
+    "subClasses" : [ "19", "6", "11", "20"],
+    "id" : "1"
+  }, {
+    "label" : {
+      "IRI-based" : "Learning long-term dependencies with gradient descent is difficult",
+      "en" : "Learning long-term dependencies with gradient descent is difficult"
+    },
+    "subClasses" : [ "9", "6"],
+    "id" : "2"
+  }, {
+    "label" : {
+      "IRI-based" : "Gradient-based learning applied to document recognition",
+      "en" : "Gradient-based learning applied to document recognition"
+    },
+    "subClasses" : [ "6", "5"],
+    "id" : "3"
+  }, {
+    "label" : {
+      "IRI-based" : "On Contrastive Divergence Learning.",
+      "en" : "On Contrastive Divergence Learning."
+    },
+    "subClasses" : [ "5", "6"],
+    "id" : "4"
+  }, {
+    "label" : {
+      "IRI-based" : "Greedy layer-wise training of deep networks",
+      "en" : "Greedy layer-wise training of deep networks"
+    },
+    "subClasses" : [ "9", "19", "11", "13"],
+    "id" : "5",
+    "superClasses" : [ "3", "4"]
+  }, {
+    "label" : {
+      "IRI-based" : "Learning deep architectures for AI",
+      "en" : "Learning deep architectures for AI"
+    },
+    "subClasses" : [ "15"],
+    "id" : "6",
+    "superClasses" : [ "1", "3", "4", "2"]
+  }, {
+    "label" : {
+      "IRI-based" : "What is the best multi-stage architecture for object recognition?",
+      "en" : "What is the best multi-stage architecture for object recognition?"
+    },
+    "subClasses" : [ "12", "10"],
+    "id" : "7"
+  }, {
+    "label" : {
+      "IRI-based" : "Convolutional Deep Belief Networks for Scalable Unsupervised Learning of Hierarchical Representations",
+      "en" : "Convolutional Deep Belief Networks for Scalable Unsupervised Learning of Hierarchical Representations"
+    },
+    "subClasses" : [ "16"],
+    "id" : "8"
+  }, {
+    "label" : {
+      "IRI-based" : "Understanding the difficulty of training deep feedforward neural networks",
+      "en" : "Understanding the difficulty of training deep feedforward neural networks"
+    },
+    "subClasses" : [ "10"],
+    "id" : "9",
+    "superClasses" : [ "2", "12", "5"]
+  }, {
+    "label" : {
+      "IRI-based" : "Rectified linear units improve restricted boltzmann machines",
+      "en" : "Rectified linear units improve restricted boltzmann machines"
+    },
+    "subClasses" : [ "14", "15", "16", "19"],
+    "id" : "10",
+    "superClasses" : [ "9", "7"]
+  }, {
+    "label" : {
+      "IRI-based" : "Deep Machine Learning - A New Frontier in Artificial Intelligence Research [Research Frontier]",
+      "en" : "Deep Machine Learning - A New Frontier in Artificial Intelligence Research [Research Frontier]"
+    },
+    "id" : "11",
+    "superClasses" : [ "1", "5"]
+  }, {
+    "label" : {
+      "IRI-based" : "Why Does Unsupervised Pre-training Help Deep Learning?",
+      "en" : "Why Does Unsupervised Pre-training Help Deep Learning?"
+    },
+    "subClasses" : [ "9", "15", "19"],
+    "id" : "12",
+    "superClasses" : [ "7"]
+  }, {
+    "label" : {
+      "IRI-based" : "Improving neural networks by preventing co-adaptation of feature detectors",
+      "en" : "Improving neural networks by preventing co-adaptation of feature detectors"
+    },
+    "subClasses" : [ "17"],
+    "id" : "13",
+    "superClasses" : [ "5"]
+  }, {
+    "label" : {
+      "IRI-based" : "ImageNet Classification with Deep Convolutional Neural Networks",
+      "en" : "ImageNet Classification with Deep Convolutional Neural Networks"
+    },
+    "id" : "14",
+    "superClasses" : [ "10"]
+  }, {
+    "label" : {
+      "IRI-based" : "Representation Learning: A Review and New Perspectives",
+      "en" : "Representation Learning: A Review and New Perspectives"
+    },
+    "id" : "15",
+    "superClasses" : [ "10", "6", "12"]
+  }, {
+    "label" : {
+      "IRI-based" : "Learning Hierarchical Features for Scene Labeling",
+      "en" : "Learning Hierarchical Features for Scene Labeling"
+    },
+    "subClasses" : [ "20", "18"],
+    "id" : "16",
+    "superClasses" : [ "8", "10"]
+  }, {
+    "label" : {
+      "IRI-based" : "Dropout: A Simple Way to Prevent Neural Networks from Overfitting",
+      "en" : "Dropout: A Simple Way to Prevent Neural Networks from Overfitting"
+    },
+    "id" : "17",
+    "superClasses" : [ "13"]
+  }, {
+    "label" : {
+      "IRI-based" : "Discriminative Unsupervised Feature Learning with Convolutional Neural Networks",
+      "en" : "Discriminative Unsupervised Feature Learning with Convolutional Neural Networks"
+    },
+    "subClasses" : [ "20"],
+    "id" : "18",
+    "superClasses" : [ "16"]
+  }, {
+    "label" : {
+      "IRI-based" : "Deep learning in neural networks: An overview",
+      "en" : "Deep learning in neural networks: An overview"
+    },
+    "id" : "19",
+    "superClasses" : [ "1", "10", "12", "5"]
+  }, {
+    "label" : {
+      "IRI-based" : "Convolutional neural network",
+      "en" : "Convolutional neural network"
+    },
+    "id" : "20",
+    "superClasses" : [ "18", "1", "16"]
+  } ],
+  "property" : [ {
+    "id" : "21",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "22",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "23",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "24",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "25",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "26",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "27",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "28",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "29",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "30",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "31",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "32",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "33",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "34",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "35",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "36",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "37",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "38",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "39",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "40",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "41",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "42",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "43",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "44",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "45",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "46",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "47",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "48",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "49",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "50",
+    "type" : "rdfs:SubClassOf"
+  } ],
+  "propertyAttribute" : [ {
+    "range" : "1",
+    "domain" : "19",
+    "attributes" : [ "anonymous" ],
+    "id" : "21"
+  }, {
+    "range" : "1",
+    "domain" : "6",
+    "attributes" : [ "anonymous" ],
+    "id" : "22"
+  }, {
+    "range" : "1",
+    "domain" : "11",
+    "attributes" : [ "anonymous" ],
+    "id" : "23"
+  }, {
+    "range" : "1",
+    "domain" : "20",
+    "attributes" : [ "anonymous" ],
+    "id" : "24"
+  }, {
+    "range" : "2",
+    "domain" : "9",
+    "attributes" : [ "anonymous" ],
+    "id" : "25"
+  }, {
+    "range" : "2",
+    "domain" : "6",
+    "attributes" : [ "anonymous" ],
+    "id" : "26"
+  }, {
+    "range" : "3",
+    "domain" : "6",
+    "attributes" : [ "anonymous" ],
+    "id" : "27"
+  }, {
+    "range" : "3",
+    "domain" : "5",
+    "attributes" : [ "anonymous" ],
+    "id" : "28"
+  }, {
+    "range" : "4",
+    "domain" : "5",
+    "attributes" : [ "anonymous" ],
+    "id" : "29"
+  }, {
+    "range" : "4",
+    "domain" : "6",
+    "attributes" : [ "anonymous" ],
+    "id" : "30"
+  }, {
+    "range" : "5",
+    "domain" : "9",
+    "attributes" : [ "anonymous" ],
+    "id" : "31"
+  }, {
+    "range" : "5",
+    "domain" : "19",
+    "attributes" : [ "anonymous" ],
+    "id" : "32"
+  }, {
+    "range" : "5",
+    "domain" : "11",
+    "attributes" : [ "anonymous" ],
+    "id" : "33"
+  }, {
+    "range" : "5",
+    "domain" : "13",
+    "attributes" : [ "anonymous" ],
+    "id" : "34"
+  }, {
+    "range" : "6",
+    "domain" : "15",
+    "attributes" : [ "anonymous" ],
+    "id" : "35"
+  }, {
+    "range" : "7",
+    "domain" : "12",
+    "attributes" : [ "anonymous" ],
+    "id" : "36"
+  }, {
+    "range" : "7",
+    "domain" : "10",
+    "attributes" : [ "anonymous" ],
+    "id" : "37"
+  }, {
+    "range" : "8",
+    "domain" : "16",
+    "attributes" : [ "anonymous" ],
+    "id" : "38"
+  }, {
+    "range" : "9",
+    "domain" : "10",
+    "attributes" : [ "anonymous" ],
+    "id" : "39"
+  }, {
+    "range" : "10",
+    "domain" : "14",
+    "attributes" : [ "anonymous" ],
+    "id" : "40"
+  }, {
+    "range" : "10",
+    "domain" : "15",
+    "attributes" : [ "anonymous" ],
+    "id" : "41"
+  }, {
+    "range" : "10",
+    "domain" : "16",
+    "attributes" : [ "anonymous" ],
+    "id" : "42"
+  }, {
+    "range" : "10",
+    "domain" : "19",
+    "attributes" : [ "anonymous" ],
+    "id" : "43"
+  }, {
+    "range" : "12",
+    "domain" : "9",
+    "attributes" : [ "anonymous" ],
+    "id" : "44"
+  }, {
+    "range" : "12",
+    "domain" : "15",
+    "attributes" : [ "anonymous" ],
+    "id" : "45"
+  }, {
+    "range" : "12",
+    "domain" : "19",
+    "attributes" : [ "anonymous" ],
+    "id" : "46"
+  }, {
+    "range" : "13",
+    "domain" : "17",
+    "attributes" : [ "anonymous" ],
+    "id" : "47"
+  }, {
+    "range" : "16",
+    "domain" : "20",
+    "attributes" : [ "anonymous" ],
+    "id" : "48"
+  }, {
+    "range" : "16",
+    "domain" : "18",
+    "attributes" : [ "anonymous" ],
+    "id" : "49"
+  }, {
+    "range" : "18",
+    "domain" : "20",
+    "attributes" : [ "anonymous" ],
+    "id" : "50"
+  } ]
+}

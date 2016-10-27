@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="list" class="pure-u-1">
+	<div class="field-table">
+		{% for item in field_list %}
+		<div class="pure-g">
+			<!-- <div class="pure-u-11-12"> -->
+				<a  class="pure-u-11-12" href="{% url 'field_select' field=item.0 %}">
+		        <div id="{{item.0}}" class="field-table-name">
+		            <div style="width: {{item.1.0}}%;">{{item.0}}</div>
+		        </div>
+		    	</a>
+	    	<!-- </div> -->
+	    	<div class="pure-u-1-12 field-table-number" >
+	    		<div>{{item.1.1}}</div>
+	    	</div>
+    	</div>
+        {% endfor %}
+    </div>
+</div>
+    
+<div id="content" class="pure-u-1" >
+	<div class="document-content-body" id="document-content">
+		<p>我是背景</p>
+		I am background
+	</div>
+</div>
+{% endblock %}

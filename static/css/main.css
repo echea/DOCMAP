@@ -1,0 +1,537 @@
+/*
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+body {
+    color: #333;
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: #1b98f8;
+}
+
+/*
+ * -- LAYOUT STYLES --
+ * This layout consists of three main elements, `#nav` (navigation bar), `#list` (email list), and `#main` (email content). All 3 elements are within `#layout`
+ */
+#layout, #nav, #list, #content, #project  {
+    margin: 0;
+    padding: 0;
+}
+
+#layout {
+    height: 100%;
+}
+
+/* Make the navigation 100% width on phones */
+#nav {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    background: rgb(61, 79, 93);
+    color: #fff;
+    text-align: center;
+}
+    #nav a {
+        color: #fff;
+        border: none;
+        white-space: normal;
+        padding: 0.5em 1em;
+        background: transparent;
+    }
+/* Show the "Menu" button on phones */
+#nav .nav-menu-button {
+    display: block;
+    top: 0.5em;
+    right: 0.5em;
+    position: absolute;
+}
+
+/* When "Menu" is clicked, the navbar should be 80% height */
+#nav.active {
+    height: 80%;
+}
+/* Don't show the navigation items... */
+.nav-inner {
+    display: none;
+}
+
+/* ...until the "Menu" button is clicked */
+#nav.active .nav-inner {
+    display: block;
+    /*padding: 2em 0;*/
+}
+
+
+/*
+ * -- NAV BAR STYLES --
+ * Styling the default .pure-menu to look a little more unique.
+ */
+#nav .pure-menu.pure-menu-open {
+    background: rgb(61, 79, 93);
+    border: none;
+    text-align: left;
+}
+    #nav .pure-menu a:hover,
+    #nav .pure-menu a:focus {
+        background: rgb(55, 60, 90);
+    }
+    #nav .pure-menu a {
+        color: #fff;
+        margin-left: 0em;
+    }
+    #nav .pure-menu-heading {
+        font-size: 125%;
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        color: #fff;
+        margin-top: 0;
+        padding: 0.6em 0.8em;
+    }
+
+    #nav .pure-menu-heading:hover,
+    #nav .pure-menu-heading:focus {
+        color: #999;
+    }
+
+    #nav .pure-menu-selected {
+        background: #1f8dd6;
+    }
+
+        #menu .pure-menu-selected a {
+            color: #fff;
+        }
+
+        #menu li.pure-menu-selected a:hover,
+        #menu li.pure-menu-selected a:focus {
+            background: none;
+        }
+    #nav .pure-menu ul {
+        border: none;
+        background: transparent;
+    }
+    #nav .pure-menu ul,
+    #nav .pure-menu .menu-item-divided {
+        border-top: 1px solid #333;
+    }
+    #nav .pure-menu li a{
+        height: 100%;
+    }
+        #nav .pure-menu li a:hover {
+            text-decoration: none;
+            background: #333;
+        },
+        #nav .pure-menu li a:focus {
+            background: #333;
+        }
+
+    #nav .menu-main a {
+        color: #fff;
+        border: none;
+        white-space: normal;
+        padding: 0.3em 1em 0.3em;
+    }
+
+    #nav .menu-sub a {
+        color: #fff;
+        border: none;
+        text-overflow: ellipsis;
+        overflow:hidden;
+        word-break:keep-all;
+        white-space:nowrap;
+        padding: 0.25em 1.8em;
+    }
+
+
+
+.nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.nav-item {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+.nav-item a {
+    background: transparent;
+    border: 2px solid rgb(176, 202, 219);
+    color: #fff;
+    margin-top: 1em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 60%;
+}
+.nav-item a:hover,
+.nav-item a:focus {
+    border: 2px solid rgb(61, 146, 201);
+    text-decoration: none;
+}
+
+/*SEARCH BAR STYLE*/
+
+#function-bar{
+    height:26px;
+    /*position: fixed;*/
+}
+
+#search{
+    /*position:fixed;*/
+}
+
+#search-btn {
+    background:#0099ff;
+    color:white;
+    font: 'trebuchet ms', trebuchet;
+    padding:5px 10px;
+    border:0 none;
+    font-weight:bold;
+}
+ 
+#search-box {
+    background: #eee;
+    width:250px;
+    padding:5px;
+    border:0 none;
+}
+
+#function{
+    padding:5px;
+    /*position:fixed;*/
+}
+    .function-item {
+        text-align: center;
+    }
+    .function-item a{
+        padding:0px 9px;
+        /*border:1px inset rgb(140, 140, 140);*/
+        color: #888888;
+    }
+
+
+
+
+/*
+ * -- LIBRARY STYLE --
+ * Styles relevent to library item etc.
+ */
+
+ /* document Item Styles */
+.document-item {
+    padding: 0.5em 1em;
+    border-bottom: 1px solid #ddd;
+    border-left: 6px solid transparent;
+}
+    .document-avatar {
+        border-radius: 3px;
+        margin-right: 0.5em;
+    }
+    .document-name,
+    .document-title, 
+    .document-time,
+    .document-pub
+    .document-author {
+        margin: 0;
+    }
+    .document-name {
+        text-transform: uppercase;
+        color: #999;
+    }
+    .document-desc {
+        font-size: 80%;
+        margin: 0.4em 0;
+    }
+    .document-time {
+        font-size: 80%;
+        text-align: right;
+    }
+        .document-time a{
+            color:#555;
+        }
+    .document-pub {
+        font-size: 80%;
+        text-align: right;
+        text-overflow: ellipsis;
+        overflow:hidden;
+        word-break:keep-all;
+        white-space:nowrap;
+    }
+        .document-pub a{
+            color:#555;
+        }
+    .document-author {
+        font-size: 70%;
+        text-overflow: ellipsis;
+        overflow:hidden;
+        word-break:keep-all;
+        white-space:nowrap;
+    }
+    .document-title {
+        cursor: pointer;
+        text-overflow: ellipsis;
+        overflow:hidden;
+        word-break:keep-all;
+        white-space:nowrap;
+    }
+    .document-item-selected {
+        border-left: 6px solid #1b98f8;
+    }
+
+/*Document Content Styles*/
+.document-content-title {
+    word-wrap: break-word;
+}
+
+.document-content-body {
+    padding: 0.5em 1em;
+    font-size: 80%;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+}
+
+.abstract {
+    font-size: 110%;
+}
+
+.function-btn {
+    background:#0099ff;
+    color:white;
+    width:100px;
+    font: 'trebuchet ms', trebuchet;
+    padding:5px 10px;
+    border:0 none;
+    font-weight:bold;
+}
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ * On tablets and other medium-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 40em) {
+
+    /* Move the layout over so we can fit the nav + list in on the left */
+    #layout {
+        padding-left:860px; /* "left col (nav + list)" width */
+        position: relative;
+    }
+
+    /* These are position:fixed; elements that will be in the left 500px of the screen */
+    #nav, #list {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        overflow: auto;
+    }
+    #nav {
+        margin-left:-860px; /* "left col (nav + list)" width */
+        width:160px;
+        height: 100%;
+    }
+
+    /* Show the menu items on the larger screen */
+    .nav-inner {
+        display: block;
+        /*padding: 2em 0;*/
+    }
+
+    /* Hide the "Menu" button on larger screens */
+    #nav .nav-menu-button {
+        display: none;
+    }
+
+    #list {
+        margin-left: -700px;
+        width: 100%;
+        height: 33%;
+        border-bottom: 1px solid #ddd;
+        background: rgba(192, 192, 192, 0.7);
+    }
+
+    #content {
+        position: fixed;
+        top: 33%;
+        right: 0;
+        bottom: 0;
+        left: 160px;
+        overflow: auto;
+        width: auto; /* so that it's not 100% */
+        height: auto;
+    }
+
+    #project {
+        margin-left: -700px;
+        width: 100%;
+        height: 33%;
+        border-bottom: 1px solid #ddd;
+    }
+
+}
+
+/*
+ * -- PRICING TABLE WRAPPER --
+ * This element wraps up all the pricing table elements
+ */
+.field-tables {
+    max-width: 980px;
+    margin: 0 auto;
+ }
+.field-tables {
+    margin-bottom: 3.125em;
+    text-align: center;
+}
+
+/*
+ * -- PRICING TABLE  --
+ * Every pricing table has the .pricing-table class
+ */
+.field-table {
+    border: 1px solid #ddd;
+    margin: 0 0.2em 0em 0em;
+    /*padding: 0 0 3em;*/
+}
+
+/*
+ * -- PRICING TABLE PRICE --
+ * Styles for the price and the corresponding <span>per month</span>
+ */
+.field-table-name {
+    font-size: 6em;
+    /*margin: 0.2em 0 0;*/
+    font-weight: 100;
+    padding-bottom: 2px;
+}
+    .field-table-name div {
+        display: block;
+        white-space:nowrap;
+        text-transform: uppercase;
+        font-size: 0.2em;
+        padding: 0.7em;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.9);
+        background: #519251;
+        /*border-bottom: 2px solid rgb(255, 255, 255);*/
+        *color: #fff;
+    }
+
+.field-table-number {
+    font-size: 6em;
+    font-weight: 100;
+}
+    .field-table-number div {
+        display: block;
+        padding: 0.7em 0.7em 0.7em 1.2em;
+        font-size:0.2em;
+        font-weight: 400;
+    }
+
+/*
+ * -- DESKTOP (AND UP) MEDIA QUERIES --
+ * On desktops and other large-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 60em) {
+
+    /* This will take up the entire height, and be a little thinner */
+    #list {
+        margin-left: -700px;
+        width:700px;
+        height: 100%;
+        border-right: 1px solid #ddd;
+        float: left;
+    }
+
+    /* This will now take up it's own column, so don't need position: fixed; */
+    #content {
+        position: static;
+        margin: 0;
+        padding: 0;
+        height:100%;
+        /*background: url('/static/img/slide.jpg');*/
+    }
+
+    #project {
+        margin-left: -700px;
+        width: 350px;
+        height: 100%;
+        border-right: 1px solid #ddd;
+        float: left;
+    }
+}
+
+/*note form style*/
+.note{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.note-content-form {
+    width: 100%;
+    padding: 10px;
+}
+    .note-content {
+        padding: 5px 1em;
+        white-space: pre-line;
+    }
+    .note-form-text,
+    .note-form-button {
+        margin: 5px;
+    }
+    .note-form-text {
+        width: 95%;
+        height: 200px;
+    }
+
+/*function behind note*/
+.function-button{
+    /*padding:3px 0px;   */
+    background: #c2ced7;
+    /*font-size: 90%;*/
+    text-align: center;
+}
+    .function-button a{
+        color:#555;
+    }
+
+/*STYLE FOR CLUSTER PAGE*/
+#legend{
+    overflow: scroll;
+}
+
+.pure-menu-children-up {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+    background: #fff;
+}
+
+.pure-menu-horizontal .pure-menu-children-up {
+    left: 0;
+    top: auto;
+    width: inherit;
+}
+
+.pure-menu-allow-hover:hover>.pure-menu-children-up,.pure-menu-active>.pure-menu-children-up {
+    display: block;
+    position: absolute;
+    /*top:-32px;*/
+    bottom:35px;
+}
+
+.pure-menu-has-children>.pure-menu-link:after {
+    padding-left: .5em;
+    content: "\25B2";
+    font-size: small;
+}

@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="list" class="pure-u-1">
+	<div id="function-bar">
+		<div class="pure-g">
+			<div class="pure-u-1-2">
+				<div id="search">
+					<form action="{% url 'search' %}" method="get">
+					<input id="search-box" name="q" type="text" placeholder="  Type  "/>
+					<input id="search-btn" value="Search" type="submit"/>
+					</form>
+				</div>
+			</div>
+			<div class="pure-u-1-2">
+				<div id="function" class="pure-g">
+					<div class="function-item pure-u-1-4" ><a href="{% url 'cluster' %}"> MAP </a></div>
+					<div class="function-item pure-u-1-2"><a href="{% url 'mindmap' %}"> MAP2 </a></div>
+					{% if project %}
+					<div class="function-item pure-u-1-4"><a href="/static/test/{{project.name}}.bib" target="view_window"> EXPORT </a></div>
+					{% else %}
+					<div class="function-item pure-u-1-4"><a href="/static/test/each.bib" target="view_window"> EXPORT </a></div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% for document in document_list %}
+	{% ifequal doc.id document.id %}
+	<div class="document-item document-item-selected"  id="document-item-{{document.id}}">
+	{% else %}
+	<div class="document-item"  id="document-item-{{document.id}}">
+	{% endifequal %}
+		<div class="pure-g">
+			<div class="pure-u-5-6">
+				<h5 class="document-title" title="{{ document.title }}"  id="{{document.id}}">{{ document.title }}</h5>
+			</div>
+			<div class="pure-u-1-6">
+				<div class="document-time"> <a href="#">{{ document.publish_time}} </a></div>
+			</div>
+		</div>
+		<div class="pure-g">
+			<div class="pure-u-5-6 document-author">
+				{% for a in document.authors.all %}
+					{% if a.first_name %}
+					{{a.first_name}}
+					{% endif %}
+					{{a.last_name}},
+				{% endfor %}
+			</div>
+			<div class="pure-u-1-6 document-pub" title="{{ document.publisher.name}}">
+				<a href="#"> {{ document.publisher.name}}</a>
+			</div>
+			
+		</div>
+	</div>
+
+	{% endfor %}
+</div>
+
+<div id="content" class="pure-u-1">
+	<img class="slide" src="/static/img/slide.jpg" width="100%" height="99%" />
+</div>
+
+
+<script type="text/javascript">
+
+
+
+	function update(id){
+  		$('.document-item').css("border-left", "6px solid rgba(192, 192, 192, 0.7)");
+
+		$('#document-item-'+ id).css("border-left", "6px solid #1b98f8");
+		
+		$.getJSON("/ajax_detail/"+ id,function(ret){
+			var html = '<div class="document-content-body" id="document-content"></div>';
+			html += '<div class="note"></div>';
+			html += '<div class="function-button"></div>';
+			$('#content').html(html);
+			html = '<h2> ' + ret['title'] + ' </h2>';
+			html += '<div class="document-content-author">' + ret['authors'].join(", ") + '</div>';
+			html += '<h3 class="pure-menu-link"> abstract </h3>';
+			html += '<div class="abstract">' + ret['desc'] + '</div>';
+			$('#document-content').html(html);
+			$("div.abstract").hide();
+			$(".document-content-body h3").click(function(){
+				$(this).next(".abstract").slideToggle("normal");
+			});
+			$('.note-content-form').remove();
+			if(!$("div").hasClass('note-content-title')){
+				var title = $('<div>').attr("class", "note-content-title pure-menu-heading");
+				title.html('NOTE');
+			}
+			$('.note').append(title);
+			var d;
+			if(!$("div").hasClass('note-content')){
+				d = $('<div>')
+					.attr('class', 'note-content');
+				$('.note').append(d);
+				d.click(createNote);
+			}
+			else{
+				d = $('.note-content');
+			}
+			d.attr('id', id);
+			if(ret['note'] != ""){
+				d.html(ret['note']);
+			}
+			else{
+				d.attr("class", "note-content note-content-none");
+				d.html("CREATE NOTE");
+			}
+			var func = $('.function-button').toggleClass("pure-menu  pure-menu-horizontal");
+			var addHide = null;
+			var delFromPro = null;
+			{% if projects %}
+				addHide = $('<li>').attr('class', "pure-menu-item pure-menu-has-children pure-menu-allow-hover");
+				var addToPro = $('<a>')
+				.attr('class', "pure-menu-link")
+				.html("ADD TO PROJECT");
+				var subPro = $('<li>').attr('class', "pure-menu-item");
+				{% for p in projects %}
+					var subProLink = $('<a>')
+						.attr('class', 'pure-menu-link')
+						.attr('id', 'project-'+{{p.id}})
+						.attr('href', function(){
+							if(id){
+								return "/library/"+id;
+							}
+							else{
+								return "#";
+							}
+						})
+						.html("{{p.name}}");
+					subPro.append(subProLink);
+					subProLink.on('click', function(e){
+						e.preventDefault();
+						$.messager.confirm('Confirm', 'Add this paper to project' + " {{p.name}} " + '?', function(r){
+							if(r){
+								$.get("{{request.path}}", {docID:id, isAdd:true, proID:{{p.id}}})
+									.done(function(){
+										alert("added successfully");
+									});
+							}
+						});
+					});	
+				{% endfor %}
+				addHide.append(addToPro);
+				addHide.append($('<ul>').attr('class', 'pure-menu-children-up').append(subPro));
+			{% endif %}
+			var del = $('<a>')
+				.attr('class', 'pure-menu-link')
+				.attr('href', '#')
+				.html("DELETE");
+			{% if project %}
+				delFromPro = $('<a>')
+					.attr('class', 'pure-menu-link')
+					.attr('href', "/project/")
+					.html('DELETE FROM PROJECT');
+				delFromPro.on('click', function(e){
+					e.preventDefault();
+					$.messager.confirm('Confirm','Are you sure you want to delete this paper from project?',function(r){   
+				    	if(r){   
+				        	$.get("{{request.path}}", {docID: id, isDelete:true})
+								.done(function() {
+									alert("deleted successfully");
+									var project = "{{request.path}}".split("/")[2];
+									window.location.href = '/project/'+project;
+								});  
+				    	}   
+				    });  
+				});
+			{% endif %}
+			func.append($('<ul>').attr('class', 'pure-menu-list').append(addHide));
+			func.append($('<li>').attr('class', 'pure-menu-item').append(del));
+			func.append($('<li>').attr('class', 'pure-menu-item').append(delFromPro));
+			// var func = $('.function-button');
+			// html = '<div class="pure-u-1-3"><a href="#">ADD TO PRO</a></div>';
+			// html += '<div class="pure-u-1-3"><a href="#">DELETE</a></div>';
+			// html +=	'<div class="pure-u-1-3"><a href="#">DEL FROM PRO</a></div>';
+			// func.html(html);
+		});
+	}
+
+	function clickHandler(event){
+		var id = event.target.getAttribute('id');
+		var project = "{{request.path}}".split("/")[2];
+		var search = "{{request.path}}".split("/")[1];
+      	var data = {
+      		id: id
+      	};
+
+      	update(data.id);
+
+      	{% if "/library/" in request.path %}
+			history.pushState(data, null, "/library/"+data.id+"/");
+		{% elif "search" in request.path %}
+			history.pushState(data, null, "/" + search);
+		{% elif "/fields/" in request.path %}
+		    history.pushState(data, null, "/fields/"+project+"/"+data.id+"/");
+		{% elif "/project/" in request.path %}
+		    history.pushState(data, null, "/project/"+project+"/"+data.id+"/");
+		{% else %}
+			history.pushState(data, null, "/library/"+data.id+"/");
+		{% endif %}
+
+		return event.preventDefault();
+	}
+
+	var documents = document.getElementsByClassName("document-title");
+
+	for (var i = 0, l = documents.length; i < l; i++) {
+      documents[i].addEventListener('click', clickHandler, true);
+    }
+
+    window.addEventListener('popstate', function(event) {
+	      update(event.state);
+    });
+
+    $(document).ready(function(){
+    	{% if doc %}
+		$("div.abstract").hide();
+		$(".document-content-body h3").click(function(){
+			$(this).next(".abstract").slideToggle("normal");
+		});
+		var note = $('.note-content');
+		note.click(createNote);
+		update({{doc.id}});
+		{% endif %}
+	});
+
+	function createNote(){
+		var form = $("<form>")
+			.attr('class', 'note-content-form pure-form')
+			.attr('id', $(this).attr('id').replace("note-",""))
+			.attr('action', '#')
+			.attr('method', 'POST');
+		var input = $("<textarea>")
+			.attr('class', 'note-form-text')
+			.attr('type', 'text')
+			.attr('name', 'note');
+		var submit = $("<input>")
+			.attr("class", "note-form-button pure-button pure-button-primary")
+			.attr('type','submit')
+			.attr('value', 'save');
+		form.html("{% csrf_token %}");
+		if(!$("div").hasClass("note-content-none")){
+			input.html($('.note-content').text().trim());
+		}
+		form.append(input);
+		form.append(submit);
+		$(this).remove();
+		$(".note").append(form);
+		$('.note-content-form').on('submit', function(event){
+			event.preventDefault();
+			create_post();
+		});
+	}
+
+	function create_post(){
+		var id = $('.note-content-form').attr('id');
+		$.ajax({
+			url : "/ajax_note/" + id + "/",
+			type : "POST",
+			data : { note : $('.note-form-text').val(),
+					'csrfmiddlewaretoken': '{{csrf_token}}'},
+
+			success : function(json){
+				$('.note-content-form').remove();
+				var d = $('<div>')
+					.attr('class', 'note-content')
+					.attr('id', "note-"+id);
+				d.html(json['note']);
+				d.click(createNote);
+				$('.note').append(d);
+			},
+
+			error : function(xhr,errmsg,err){
+				alert(errmsg);
+			}
+		});
+	}
+
+	
+</script>
+
+{% endblock %}
